@@ -1,17 +1,23 @@
-import mysql from 'mysql';
-// var mysql = require('mysql');
-var connection = mysql.createConnection({
+import mysql from 'mysql'
+var pool = mysql.createPool({
   host: 'localhost',
   user: 'root',
   password: 'password',
   database: 'test'
-});
- 
-connection.connect();
- 
-connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
-  if (error) throw error;
-  console.log('The solution is: ', results[0].solution);
-});
+})
 
-export default connection
+var query = function (sql, callback) {
+  pool.getConnection(function (err, conn) {
+    if (err) {
+      callback(err, null, null)
+    } else {
+      conn.query(sql, function (qerr, vals, fields) {
+        conn.release()// 释放链接
+        console.log('A connection has been release')
+        callback(qerr, vals, fields)// 事件驱动回掉
+      })
+    }
+  })
+}
+
+export default query
