@@ -16,6 +16,7 @@
 // console.log('Server running at http://127.0.0.1:8888/');
 import express from 'express';
 // var express = require('express');
+import mysqlConnection from './src/mysql.js'
 var app = express();
 
 app.get('/',function(req,res){
@@ -25,7 +26,7 @@ app.get('/',function(req,res){
 var server = app.listen(8888,function(){
     var host = server.address().address;
     var port = server.address().port;
-    // console.log('callDef',callDef)
+    console.log('mysqlConnection',mysqlConnection)
   console.log("应用实例，访问地址为 http://%s:%s", host, port)
 });
 console.log('Server running at http://127.0.0.1:8888/');
