@@ -3,6 +3,7 @@ import bodyParser from 'body-parser'
 import session from 'express-session'
 import cookieParser from 'cookie-parser'
 import users from './src/users.js'
+import downloadFile from './src/index.js'
 
 var app = express()
 app.use(bodyParser.json())
@@ -33,6 +34,7 @@ app.all('*', function (req, res, next) { // cors
   }
 })
 
+app.use('/', downloadFile)
 app.use('/', users)// import login
 
 var server = app.listen(8888, function () {

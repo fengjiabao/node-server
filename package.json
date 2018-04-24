@@ -11,9 +11,12 @@
   "license": "ISC",
   "dependencies": {
     "cookie-parser": "^1.4.3",
+    "excel-export": "^0.5.1",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
-    "mysql": "^2.15.0"
+    "mysql": "^2.15.0",
+    "node-excel-export": "^1.4.3",
+    "node-xlrd": "^0.2.4"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
