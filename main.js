@@ -11,6 +11,8 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(cookieParser())
 // app.use(express.static(path.join(__dirname, 'public')));
 
+// app.use(express.static(__dirname + '/public'))//不用路由时可使用
+
 app.use(session({
   secret: 'fengjb',
   name: 'noderserver',                         // ,这里的name值得是cookie的name，默认cookie的name是：connect.sid
